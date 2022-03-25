@@ -1,0 +1,33 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+<div class="outer-box">
+    <div  class="box">
+        <div class="heading">
+            <h1>
+                Add A New Todo
+            </h1>
+        </div>
+        <div class="input-todo">
+            <form action="" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input class="btn-todo" type="submit" name="addTodo" value="Add">
+            </form>
+        </div>
+    </div>
+    {% for todo in todos %}
+    <div class="todo-list">
+        <ol class="outerList">
+            <div>
+                <li class="list">
+                    <div>
+                    <p>{{ todo.content }}</p>
+                    </div>
+                    <a class="btn btn-secondary" id="" href="{% url 'todo-delete' todo.id %}">x</a>
+                </li>
+            </div>
+        </ol>
+    </div>
+    {% endfor %}
+    {% endblock %}
